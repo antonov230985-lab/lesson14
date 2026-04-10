@@ -1,3 +1,9 @@
+"""Черный ящик №4: выгрузка результата на Google Drive.
+
+Файл принимает локальный итоговый xlsx и удаленный file_id (или пустое значение
+для создания нового файла) и делегирует операцию клиенту Google Drive.
+"""
+
 from pathlib import Path
 
 from cloud.google_drive_client import GoogleDriveClient

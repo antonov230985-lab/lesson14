@@ -1,3 +1,10 @@
+"""Точка входа cloud-режима урока 14.
+
+Файл запускает бесконечный цикл синхронизации: читает конфигурацию из переменных окружения,
+инициализирует клиентов Яндекс.Диска и Google Drive, проверяет корректность обязательных
+настроек и передает управление модулю оркестрации sync.runner.
+"""
+
 from cloud.factory import build_clients
 from config import load_config
 from logging_setup import setup_logging
@@ -5,8 +12,27 @@ from sync.runner import run_forever
 from sync.state_store import StateStore
 
 
+def _validate_required_settings() -> list[str]:
+    config = load_config()
+    missing: list[str] = []
+    if not config.yandex_token:
+        missing.append("YANDEX_TOKEN")
+    if not config.google_service_account_file:
+        missing.append("GOOGLE_SERVICE_ACCOUNT_FILE")
+    if not config.google_drive_file_id:
+        missing.append("GOOGLE_DRIVE_FILE_ID")
+    return missing
+
+
 def main() -> None:
     setup_logging()
+    missing = _validate_required_settings()
+    if missing:
+        print("Ошибка конфигурации: не заданы обязательные переменные окружения:")
+        for key in missing:
+            print(f"- {key}")
+        print("Создай .env на основе .env.example и перезапусти app.py.")
+        raise SystemExit(1)
     config = load_config()
     yandex_client, google_client = build_clients(config)
     state_store = StateStore(config.state_file)

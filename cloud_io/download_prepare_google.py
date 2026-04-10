@@ -1,3 +1,9 @@
+"""Черный ящик №2: download+prepare из Google Drive.
+
+Файл скачивает входной Excel по file_id из Google Drive и подготавливает локальный
+CSV-набор, совместимый с processing-пайплайном.
+"""
+
 from pathlib import Path
 
 from cloud.google_drive_client import GoogleDriveClient

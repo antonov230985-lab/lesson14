@@ -1,3 +1,9 @@
+"""Фабрика создания cloud-клиентов.
+
+Файл собирает рабочие экземпляры клиентов Яндекс.Диска и Google Drive на основе AppConfig,
+чтобы точка входа не содержала лишней инфраструктурной логики.
+"""
+
 from config import AppConfig
 from cloud.google_drive_client import GoogleDriveClient
 from cloud.yandex_drive_client import YandexDriveClient

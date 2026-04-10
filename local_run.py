@@ -1,3 +1,10 @@
+"""Локальный тестовый запуск без облачных API.
+
+Файл нужен для быстрой проверки пайплайна: берет local Excel homework_lesson13.xlsx,
+конвертирует листы в CSV, запускает основную обработку и собирает итоговый
+lesson14_all_tasks_clean.xlsx в текущей папке. Временные файлы удаляются автоматически.
+"""
+
 from pathlib import Path
 
 from cloud_io.common import xlsx_to_csv_bundle

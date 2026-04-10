@@ -1,3 +1,9 @@
+"""Клиент Google Drive через официальный SDK.
+
+Файл создает авторизованный сервис Google Drive по service account и реализует базовые
+операции: получение метаданных, скачивание файла и обновление/создание итогового xlsx.
+"""
+
 from pathlib import Path
 
 from google.oauth2 import service_account

@@ -1,3 +1,9 @@
+"""Черный ящик №1: download+prepare из Яндекс.Диска.
+
+Файл скачивает homework_lesson13.xlsx из Яндекс.Диска в рабочую директорию и сразу
+конвертирует его в CSV-набор для processing-пайплайна.
+"""
+
 from pathlib import Path
 
 from cloud.yandex_drive_client import YandexDriveClient
