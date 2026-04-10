@@ -5,5 +5,4 @@ __pycache__/
 .sync_state.json
 lesson14_all_tasks_clean.xlsx
 .env
-help.md
 secrets/

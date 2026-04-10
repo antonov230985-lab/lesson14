@@ -5,6 +5,8 @@
 настроек и передает управление модулю оркестрации sync.runner.
 """
 
+from dotenv import load_dotenv
+
 from cloud.factory import build_clients
 from config import load_config
 from logging_setup import setup_logging
@@ -23,6 +25,8 @@ def _validate_required_settings() -> list[str]:
 
 
 def main() -> None:
+    # Автоматически подгружаем переменные из .env из корня проекта.
+    load_dotenv(override=True)
     setup_logging()
     missing = _validate_required_settings()
     if missing:
