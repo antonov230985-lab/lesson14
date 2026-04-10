@@ -9,5 +9,14 @@ from pathlib import Path
 from cloud.google_drive_client import GoogleDriveClient
 
 
-def upload_result_google(client: GoogleDriveClient, local_xlsx: Path, remote_file_id: str) -> None:
-    client.upload_file(local_xlsx, remote_file_id)
+def upload_result_google(
+    client: GoogleDriveClient,
+    local_xlsx: Path,
+    remote_file_id: str,
+    output_name: str,
+    output_folder_id: str = "",
+) -> str:
+    if remote_file_id:
+        client.upload_file(local_xlsx, remote_file_id)
+        return remote_file_id
+    return client.upload_or_replace_by_name(local_xlsx, output_name, output_folder_id or None)

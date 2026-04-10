@@ -15,12 +15,10 @@ from sync.state_store import StateStore
 def _validate_required_settings() -> list[str]:
     config = load_config()
     missing: list[str] = []
-    if not config.yandex_token:
-        missing.append("YANDEX_TOKEN")
     if not config.google_service_account_file:
         missing.append("GOOGLE_SERVICE_ACCOUNT_FILE")
-    if not config.google_drive_file_id:
-        missing.append("GOOGLE_DRIVE_FILE_ID")
+    if not config.google_input_name:
+        missing.append("GOOGLE_INPUT_NAME")
     return missing
 
 

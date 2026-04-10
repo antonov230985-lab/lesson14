@@ -6,3 +6,4 @@ __pycache__/
 lesson14_all_tasks_clean.xlsx
 .env
 help.md
+secrets/
